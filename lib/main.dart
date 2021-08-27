@@ -12,9 +12,12 @@ class MyApp extends StatelessWidget {
           title: Text('Material App Bar'),
         ),
         body: Center(
-          child: Image.network(
-            'https://i.imgur.com/TxUcY31.gif',
-            fit: BoxFit.cover,
+          child: IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              print('q pasa');
+            },
+            iconSize: 200,
           ),
         ),
       ),
