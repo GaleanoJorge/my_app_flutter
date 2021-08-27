@@ -12,41 +12,70 @@ class MyApp extends StatelessWidget {
           title: Text('Uso del AppBar'),
         ),
         body: SizedBox(
-          // width: double.infinity,
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                color: Colors.orange,
-                height: 100,
-                width: 100,
+            children: [
+              Row(
+                children: <Widget>[
+                  Expanded(child: Text('Activar sonido')),
+                  Icon(
+                    Icons.android,
+                    size: 60,
+                  ),
+                  Switch(
+                    value: true,
+                    onChanged: (value) {},
+                  )
+                ],
               ),
-              Text('q pasa'),
-              Image.network(
-                'https://giffiles.alphacoders.com/132/13214.gif',
-                height: 80,
+              Divider(),
+              Row(
+                children: <Widget>[
+                  Expanded(child: Text('Habilitar el uso de la cámara')),
+                  Icon(
+                    Icons.android,
+                    size: 60,
+                  ),
+                  Switch(
+                    value: true,
+                    onChanged: (value) {},
+                  )
+                ],
               ),
-              Image.network(
-                'https://c.tenor.com/TvxUjFq26-oAAAAd/anime-hunter-x-hunter.gif',
-                height: 80,
-              ),
-              Image.network(
-                'https://qph.fs.quoracdn.net/main-qimg-ed282280634ab4deb0a403aae9b98b95',
-                height: 80,
-              ),
-              Image.network(
-                'https://thumbs.gfycat.com/EcstaticThoseBarbet-max-1mb.gif',
-                height: 80,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    width: 50,
+                    color: Colors.black,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    color: Colors.orange,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 50,
+                    color: Colors.blue,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    color: Colors.black,
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void _add() {
-    print('Holanda');
   }
 }
