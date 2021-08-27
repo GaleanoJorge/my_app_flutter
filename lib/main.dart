@@ -10,15 +10,38 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Uso del AppBar'),
-          actions: <Widget>[
-            IconButton(onPressed: _add, icon: Icon(Icons.add)),
-            IconButton(onPressed: _add, icon: Icon(Icons.remove)),
-          ],
-          elevation: 50,
-          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.elliptical(50, 20)),),
-          leading: IconButton(onPressed: _add, icon: Icon(Icons.arrow_back)),
         ),
-        body: Center(),
+        body: SizedBox(
+          // width: double.infinity,
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                color: Colors.orange,
+                height: 100,
+                width: 100,
+              ),
+              Text('q pasa'),
+              Image.network(
+                'https://giffiles.alphacoders.com/132/13214.gif',
+                height: 80,
+              ),
+              Image.network(
+                'https://c.tenor.com/TvxUjFq26-oAAAAd/anime-hunter-x-hunter.gif',
+                height: 80,
+              ),
+              Image.network(
+                'https://qph.fs.quoracdn.net/main-qimg-ed282280634ab4deb0a403aae9b98b95',
+                height: 80,
+              ),
+              Image.network(
+                'https://thumbs.gfycat.com/EcstaticThoseBarbet-max-1mb.gif',
+                height: 80,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
