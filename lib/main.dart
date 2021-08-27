@@ -9,17 +9,17 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          backgroundColor: Colors.transparent,
+          title: Text('Uso del Scaffold'),
         ),
-        body: Center(
-          child: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              print('q pasa');
-            },
-            iconSize: 200,
-          ),
+        body: Center(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {},
         ),
+        drawer: Drawer(),
+        endDrawer: Drawer(),
+        backgroundColor: Colors.black,
       ),
     );
   }
