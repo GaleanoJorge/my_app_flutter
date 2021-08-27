@@ -9,18 +9,21 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: Text('Uso del Scaffold'),
+          title: Text('Uso del AppBar'),
+          actions: <Widget>[
+            IconButton(onPressed: _add, icon: Icon(Icons.add)),
+            IconButton(onPressed: _add, icon: Icon(Icons.remove)),
+          ],
+          elevation: 50,
+          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.elliptical(50, 20)),),
+          leading: IconButton(onPressed: _add, icon: Icon(Icons.arrow_back)),
         ),
         body: Center(),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {},
-        ),
-        drawer: Drawer(),
-        endDrawer: Drawer(),
-        backgroundColor: Colors.black,
       ),
     );
+  }
+
+  void _add() {
+    print('Holanda');
   }
 }
