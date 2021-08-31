@@ -17,18 +17,18 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Uso del AppBar'),
-        ),
-        body: ListView.builder(
-            itemCount: 50,
-            itemBuilder: (BuildContext context, int index) {
-              final int id = index + 1000;
-              return Image.network('https://picsum.photos/id/$id/300/300',
-              height: 400,);
-            }),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Assets'),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Image.asset('assets/IMG_1.jpg'),
+          Image.asset('assets/IMG_2.jpg'),
+          Image.asset('assets/IMG_3.jpg'),
+          Image.asset('assets/IMG_4.jpg'),
+          Image.asset('assets/IMG_5.jpg'),
+        ],
       ),
     );
   }
