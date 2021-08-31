@@ -15,24 +15,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
-  List<String> names = [
-    'Jorge',
-    'Nathaly',
-    'Jim',
-    'Andres',
-    'Stefanny',
-    'Jorge',
-    'Nathaly',
-    'Jim',
-    'Andres',
-    'Stefanny',
-    'Jorge',
-    'Nathaly',
-    'Jim',
-    'Andres',
-    'Stefanny'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,18 +23,11 @@ class MyHomePage extends StatelessWidget {
           title: Text('Uso del AppBar'),
         ),
         body: ListView.builder(
-            itemCount: names.length,
+            itemCount: 50,
             itemBuilder: (BuildContext context, int index) {
-              final name = names[index];
-              return Card(
-                child: ListTile(
-                  title: Text(name),
-                  leading: Icon(Icons.person),
-                  onTap: (){
-                    print(name);
-                  },
-                ),
-              );
+              final int id = index + 1000;
+              return Image.network('https://picsum.photos/id/$id/300/300',
+              height: 400,);
             }),
       ),
     );
