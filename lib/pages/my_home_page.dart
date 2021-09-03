@@ -51,17 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 },
               ),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Apellido:'),
+                keyboardType: TextInputType.url,
+              ),
               RaisedButton(
                 onPressed: () {
                   _showSecondPage(context);
                 },
                 child: Text('Mostrar Segunda Pantalla'),
               ),
-              Container(
-                height: 1000,
-                width: 20,
-                color: Colors.black,
-              )
             ],
           ),
         ),
