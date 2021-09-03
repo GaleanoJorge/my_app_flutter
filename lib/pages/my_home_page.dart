@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/pages/second_page.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  late TextEditingController nameTextController;
+  late TextEditingController lastNameTextController;
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +17,27 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Uso básico de navigator'),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            _showSecondPage(context);
-          },
-          child: Text('Mostrar Segunda Pantalla'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+
+            TextField(
+              decoration: InputDecoration(labelText: 'Nombre:'),
+              controller: nameTextController,
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Apellido:'),
+              controller: lastNameTextController,
+            ),
+
+            RaisedButton(
+              onPressed: () {
+                _showSecondPage(context);
+              },
+              child: Text('Mostrar Segunda Pantalla'),
+            ),
+          ],
         ),
       ),
     );
@@ -27,6 +49,22 @@ class MyHomePage extends StatelessWidget {
     // });
     // Navigator.of(context).push(route);
 
-    Navigator.of(context).pushNamed('/second', arguments: SecondPageArguments(name: 'Jorge', lastName: 'Galeano'));
+    Navigator.of(context).pushNamed('/second', arguments: SecondPageArguments(name: nameTextController.text, lastName: lastNameTextController.text));
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    nameTextController = TextEditingController();
+    lastNameTextController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    nameTextController.dispose();
+    lastNameTextController.dispose();
   }
 }

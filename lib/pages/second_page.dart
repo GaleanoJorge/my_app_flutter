@@ -10,7 +10,15 @@ class SecondPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Segunda Pantalla'),
       ),
-      body: Center(child: Text(arguments!.name+' '+arguments.lastName),),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(arguments!.name),
+            Text(arguments.lastName),
+          ],
+        ),
+      ),
     );
   }
 }
