@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -22,81 +20,71 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String name = 'Jorge';
-  double progressValue = 0.0;
-  bool swichValue = false;
-  bool isFull = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Statefull Widget'),
+        title: Text('Gesture Detector'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text(
-              this.name,
-              style: TextStyle(fontSize: 30),
-            ),
-            LinearProgressIndicator(
-              value: this.progressValue,
-            ),
-            Switch(
-                value: this.swichValue,
-                onChanged: (value) {
-                  setState(() {
-                    this.swichValue = value;
-                  });
-                }),
+            ListItem(),
+            ListItem(),
+            ListItem(),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: chageName,
       ),
     );
   }
 
-  void chageName() {
-    setState(() {
-      if (name == 'Jorge') {
-        name = 'George';
-      } else {
-        name = 'Jorge';
-      }
-
-      if (progressValue < 1 && !isFull) {
-        progressValue += 0.05;
-      } else {
-        this.isFull = true;
-      }
-
-      if (progressValue > 0 && isFull) {
-        progressValue -= 0.05;
-      } else {
-        isFull = false;
-      }
-
-      this.swichValue = !swichValue;
-    });
-  }
-
-  /**Antes de dibujar por prmera vez se ejecuta el método initState */
+  /// Antes de dibujar por prmera vez se ejecuta el método initState */
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      chageName();
-    });
   }
 
-  /**Cuando el Widget es destruido se ejecuta el método dispose */
+  /// Cuando el Widget es destruido se ejecuta el método dispose */
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+  }
+}
+
+class ListItem extends StatelessWidget {
+  const ListItem({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //GestureDetector detector sirve paradetectar cualquier tipo de interacción con cualquier tipo de Widget aún si estos por defecto no tinen esta cualidad
+    //sin embargo este no muestra dicha interacción en pantalla a diferencia del InkWell el cual tiene las mismas propiedades pero muesta la interacción como si fuera un botón
+    return GestureDetector(
+        onDoubleTap: _onTab,
+        onLongPress: _onLongPress,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: <Widget>[
+              Icon(Icons.folder),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                'Mis Tareas',
+                style: TextStyle(fontSize: 30),
+              ),
+            ],
+          ),
+        ));
+  }
+
+  void _onTab() {
+    print('Hola');
+  }
+
+  void _onLongPress() {
+    print('Se ha mantenido el click');
   }
 }
