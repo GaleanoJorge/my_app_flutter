@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:my_app/pages/second_page.dart';
 
 class MyHomePage extends StatefulWidget {
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   late String nameValue;
   late String lastNameValue;
 
-  final nameController = TextEditingController(text: 'George');
-  final lastNameController = TextEditingController();
+  late TextEditingController nameController;
+  late TextEditingController lastNameController;
 
-  final formKey = GlobalKey <FormState>();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +27,14 @@ class _MyHomePageState extends State<MyHomePage> {
           key: formKey,
           child: ListView(
             children: <Widget>[
-        
               TextFormField(
                 controller: nameController,
                 decoration: InputDecoration(labelText: 'Nombre:'),
-                onSaved: (value){
+                onSaved: (value) {
                   nameValue = value!;
                 },
-                validator: (value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return 'Llene este campo';
                   }
                 },
@@ -45,25 +42,26 @@ class _MyHomePageState extends State<MyHomePage> {
               TextFormField(
                 controller: lastNameController,
                 decoration: InputDecoration(labelText: 'Apellido:'),
-                onSaved: (value){
+                onSaved: (value) {
                   lastNameValue = value!;
                 },
-                validator: (value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return 'Llene este campo';
                   }
                 },
               ),
-        
               RaisedButton(
                 onPressed: () {
                   _showSecondPage(context);
                 },
                 child: Text('Mostrar Segunda Pantalla'),
               ),
-              Container(height: 1000,
-              width: 20,
-              color: Colors.black,)
+              Container(
+                height: 1000,
+                width: 20,
+                color: Colors.black,
+              )
             ],
           ),
         ),
@@ -72,11 +70,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _showSecondPage(BuildContext context) {
-    if(formKey.currentState!.validate()){
+    if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
     }
 
-    Navigator.of(context).pushNamed('/second', arguments: SecondPageArguments(name: this.nameValue, lastName: this.lastNameValue));
+    Navigator.of(context).pushNamed('/second',
+        arguments: SecondPageArguments(
+            name: this.nameValue, lastName: this.lastNameValue));
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    nameController = TextEditingController();
+    lastNameController = TextEditingController();
   }
 
   @override
